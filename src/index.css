@@ -1,0 +1,216 @@
+/* stylelint-disable */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Nunito — friendly sans for body */
+@font-face {
+  font-family: "Nunito";
+  src: url("https://resource-static.bj.bcebos.com/fonts-skill/Nunito-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Wedding palette — 5-tone blue from reference image:
+       #1A3A8F deep navy | #4A7EC7 cobalt | #6BAED6 sky | #9ECAE1 pale | #D0E9F7 ice */
+    --radius: 0.25rem;
+
+    --background: 207 73% 96%; /* #D0E9F7 ice blue — page base */
+    --foreground: 224 68% 32%; /* #1A3A8F deep navy — body text */
+    --card: 207 60% 98%; /* near-white ice for card surfaces */
+    --card-foreground: 224 68% 32%;
+    --popover: 207 60% 98%;
+    --popover-foreground: 224 68% 32%;
+    --primary: 224 68% 32%; /* #1A3A8F deep navy — primary CTA */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 211 53% 54%; /* #4A7EC7 cobalt — secondary actions */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 205 52% 83%; /* #9ECAE1 pale blue — muted surfaces */
+    --muted-foreground: 220 40% 38%;
+    --accent: 207 53% 63%; /* #6BAED6 sky blue — accent / dividers */
+    --accent-foreground: 224 68% 18%;
+    --destructive: 0 80% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 205 52% 83%; /* #9ECAE1 pale blue border */
+    --input: 205 52% 83%;
+    --ring: 211 53% 54%;
+
+    --chart-1: 224 68% 32%;
+    --chart-2: 211 53% 54%;
+    --chart-3: 207 53% 63%;
+    --chart-4: 205 52% 75%;
+    --chart-5: 207 73% 90%;
+
+    --sidebar-background: 207 73% 96%;
+    --sidebar-foreground: 224 68% 32%;
+    --sidebar-primary: 224 68% 32%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 205 52% 83%;
+    --sidebar-accent-foreground: 224 68% 32%;
+    --sidebar-border: 205 52% 83%;
+    --sidebar-ring: 211 53% 54%;
+
+    /* Named wedding palette steps */
+    --blue-navy: 224 68% 32%; /* #1A3A8F */
+    --blue-cobalt: 211 53% 54%; /* #4A7EC7 */
+    --blue-sky: 207 53% 63%; /* #6BAED6 */
+    --blue-pale: 205 52% 83%; /* #9ECAE1 */
+    --blue-ice: 207 73% 96%; /* #D0E9F7 */
+  }
+
+  .dark {
+    --background: 224 50% 12%;
+    --foreground: 207 73% 92%;
+    --card: 224 48% 15%;
+    --card-foreground: 207 73% 92%;
+    --popover: 224 48% 15%;
+    --popover-foreground: 207 73% 92%;
+    --primary: 211 60% 62%;
+    --primary-foreground: 224 68% 10%;
+    --secondary: 207 50% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 224 40% 20%;
+    --muted-foreground: 207 40% 65%;
+    --accent: 207 53% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 38%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 224 40% 24%;
+    --input: 224 40% 24%;
+    --ring: 211 60% 62%;
+
+    --chart-1: 211 60% 62%;
+    --chart-2: 207 53% 55%;
+    --chart-3: 205 52% 70%;
+    --chart-4: 207 73% 80%;
+    --chart-5: 224 68% 45%;
+
+    --sidebar-background: 224 50% 12%;
+    --sidebar-foreground: 207 73% 92%;
+    --sidebar-primary: 211 60% 62%;
+    --sidebar-primary-foreground: 224 68% 10%;
+    --sidebar-accent: 224 40% 20%;
+    --sidebar-accent-foreground: 207 73% 92%;
+    --sidebar-border: 224 40% 24%;
+    --sidebar-ring: 211 60% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Nunito", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    line-height: 1.25;
+  }
+}
+
+/* Art Deco double-line blue divider */
+.deco-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: hsl(var(--accent));
+}
+.deco-divider::before,
+.deco-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  box-shadow: 0 2px 0 hsl(var(--accent));
+  background: hsl(var(--accent));
+}
+
+/* Botanical corner motif — blue ink */
+.botanical-corner {
+  pointer-events: none;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  opacity: 0.22;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M4 60 Q4 4 60 4' stroke='%234A7EC7' stroke-width='1.5' fill='none'/%3E%3Cpath d='M4 60 Q20 40 35 20 Q28 30 18 42' stroke='%234A7EC7' stroke-width='1' fill='none'/%3E%3Cellipse cx='20' cy='38' rx='8' ry='5' transform='rotate(-30 20 38)' stroke='%234A7EC7' stroke-width='0.8' fill='none'/%3E%3Cellipse cx='36' cy='22' rx='7' ry='4' transform='rotate(-50 36 22)' stroke='%234A7EC7' stroke-width='0.8' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.botanical-corner.tl {
+  top: 0;
+  left: 0;
+}
+.botanical-corner.tr {
+  top: 0;
+  right: 0;
+  transform: scaleX(-1);
+}
+.botanical-corner.bl {
+  bottom: 0;
+  left: 0;
+  transform: scaleY(-1);
+}
+.botanical-corner.br {
+  bottom: 0;
+  right: 0;
+  transform: scale(-1);
+}
+
+.fleurs-haut-gauche {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 145px;
+  z-index: 2;
+}
+
+.fleurs-bas-droite {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 130px;
+  z-index: 2;
+}
+
+/* Section fade-in on scroll */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+.section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Paper grain texture overlay */
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Blue glow on headings */
+.gold-glow {
+  text-shadow: 0 0 24px hsla(211, 53%, 54%, 0.25);
+}
