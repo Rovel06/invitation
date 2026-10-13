@@ -54,8 +54,8 @@ export default function ProgramSection() {
   return (
     <section
       id="programme"
-      className="py-14 px-6 relative overflow-hidden"
-      style={{ background: "hsl(var(--blue-ice))" }}
+      className="py-14 px-6 relative overflow-hidden bg-motif-fleurs"
+      style={{ backgroundColor: "hsl(var(--blue-ice))" }}
     >
       <div className="botanical-corner tl" />
       <div className="botanical-corner tr" />

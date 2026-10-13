@@ -171,6 +171,30 @@
   transform: scale(-1);
 }
 
+/* Repeating floral pattern, slightly blurred under a white veil.
+   The section keeps its own background-color underneath; the pattern lives on
+   ::before so the blur doesn't affect the content. */
+.bg-motif-fleurs {
+  --motif-blur: 2px;
+  --motif-voile: rgb(255 255 255 / 0.35);
+  isolation: isolate;
+}
+.bg-motif-fleurs::before {
+  content: "";
+  position: absolute;
+  /* overshoot then clip, so the blur doesn't fade the edges */
+  inset: calc(var(--motif-blur) * -3);
+  clip-path: inset(calc(var(--motif-blur) * 3));
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--motif-voile), var(--motif-voile)),
+    url("/images/motif-fleurs-doux.webp");
+  background-repeat: repeat;
+  background-size: 360px;
+  filter: blur(var(--motif-blur));
+}
+
 .fleurs-haut-gauche {
   position: absolute;
   top: 0;

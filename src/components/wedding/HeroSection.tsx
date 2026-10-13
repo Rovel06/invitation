@@ -5,11 +5,25 @@ import { ArrowDown } from "lucide-react";
 const HERO_IMAGE =
   "https://miaoda-site-img.s3cdn.medo.dev/images/KLing_eab9c6ac-6678-4b9e-9493-a6b525e8bc0d.jpg";
 
-export default function HeroSection() {
+interface Props {
+  onEnterNav: () => void;
+}
+
+/**
+ * Base size of the hero content: every size inside is in `em`, so the whole
+ * block scales with the screen. The content measures 24em × 43em, so the base
+ * follows whichever of width or height runs out first and fills the frame
+ * without overflowing. `cqw`/`cqh` refer to the hero's container (see
+ * InvitationPage), not the window, so it also works when the page is capped
+ * on desktop.
+ */
+const HERO_FONT_SIZE = "clamp(12px, min(4.1cqw, 2.25cqh), 26px)";
+
+export default function HeroSection({ onEnterNav }: Props) {
   return (
     <section
       id="accueil"
-      className="relative min-h-[92dvh] flex flex-col items-center justify-center overflow-hidden"
+      className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden"
     >
       <div className="absolute inset-0 z-0">
         <img
@@ -41,10 +55,13 @@ export default function HeroSection() {
         className="absolute inset-8 z-10 pointer-events-none"
         style={{ border: "1px solid hsl(207 53% 63% / 0.25)" }}
       />
-      <div className="relative z-20 flex flex-col items-center text-center px-8 py-16 max-w-sm mx-auto">
+      <div
+        className="relative z-20 flex flex-col items-center text-center px-[2em] py-[2.5em] max-w-[24em] mx-auto"
+        style={{ fontSize: HERO_FONT_SIZE }}
+      >
         <SectionReveal delay="0ms">
           <p
-            className="text-xs tracking-[0.4em] uppercase font-medium mb-6"
+            className="text-[0.75em] tracking-[0.4em] uppercase font-medium mb-[2em]"
             style={{ color: "hsl(var(--blue-pale))" }}
           >
             Vous êtes cordialement invités au mariage de
@@ -57,16 +74,16 @@ export default function HeroSection() {
               className="font-['Cormorant_Garamond'] font-semibold italic"
               style={{
                 color: "hsl(var(--blue-ice))",
-                fontSize: "clamp(2.5rem, 8vw, 3.6rem)",
+                fontSize: "2.6em",
               }}
             >
-              Ariane Dora
+              La mariée
             </h1>
             <div
               className="font-['Cormorant_Garamond'] font-semibold italic"
               style={{
                 color: "hsl(var(--blue-ice))",
-                fontSize: "clamp(1.8rem, 5vw, 2.6rem)",
+                fontSize: "1.9em",
               }}
             >
               &
@@ -75,16 +92,16 @@ export default function HeroSection() {
               className="font-['Cormorant_Garamond'] font-semibold italic"
               style={{
                 color: "hsl(var(--blue-ice))",
-                fontSize: "clamp(2.5rem, 8vw, 3.6rem)",
+                fontSize: "2.6em",
               }}
             >
-              Ghislain
+              Le marié
             </h1>
           </div>
         </SectionReveal>
 
         <SectionReveal delay="300ms">
-          <div className="flex items-center gap-3 my-6 w-48">
+          <div className="flex items-center gap-[0.75em] my-[1.5em] w-[12em]">
             <div
               className="h-px flex-1"
               style={{
@@ -120,25 +137,25 @@ export default function HeroSection() {
 
         <SectionReveal delay="400ms">
           <p
-            className="font-['Cormorant_Garamond'] text-xl"
+            className="font-['Cormorant_Garamond'] text-[1.25em]"
             style={{ color: "hsl(var(--blue-ice))" }}
           >
             22 &amp; 26 juin 2027
           </p>
           <p
-            className="text-sm mt-1"
+            className="text-[0.875em] mt-[0.25em]"
             style={{ color: "hsl(var(--blue-pale))" }}
           >
             Dschang &amp; Yaoundé
           </p>
           <div
-            className="mt-2 text-center"
+            className="mt-[0.5em] text-center"
             style={{ color: "hsl(var(--blue-pale))" }}
           >
-            <p className="font-['Cormorant_Garamond'] text-base italic leading-snug">
+            <p className="font-['Cormorant_Garamond'] text-[1em] italic leading-snug">
               Dot au village FOMOPEA
             </p>
-            <p className="font-['Cormorant_Garamond'] text-base italic leading-snug">
+            <p className="font-['Cormorant_Garamond'] text-[1em] italic leading-snug">
               Civil et soirée à Yaoundé
             </p>
           </div>
@@ -146,15 +163,11 @@ export default function HeroSection() {
 
         <SectionReveal delay="550ms">
           <button
+            id="scroll-to-nav"
             type="button"
-            onClick={() => {
-              document.getElementById("programme")?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
-            }}
+            onClick={onEnterNav}
             aria-label="Découvrir le programme"
-            className="press-me-button mt-10 inline-flex h-20 w-20 items-center justify-center rounded-full transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95"
+            className="press-me-button mt-[2.5em] inline-flex h-[5em] w-[5em] items-center justify-center rounded-full transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95"
             style={{
               background:
                 "linear-gradient(145deg, hsl(43 72% 54%), hsl(32 82% 28%))",
@@ -164,14 +177,14 @@ export default function HeroSection() {
             }}
           >
             <ArrowDown
-              className="h-5 w-5"
+              className="h-[1.25em] w-[1.25em]"
               strokeWidth={1.8}
               aria-hidden="true"
             />
           </button>
         </SectionReveal>
 
-        <div className="mt-3 w-full">
+        <div className="mt-[0.75em] w-full">
           <Countdown />
         </div>
       </div>

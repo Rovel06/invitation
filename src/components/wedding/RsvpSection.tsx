@@ -128,8 +128,8 @@ export default function RsvpSection() {
   return (
     <section
       id="rsvp"
-      className="py-14 px-6 relative"
-      style={{ background: "hsl(var(--blue-pale))" }}
+      className="py-14 px-6 relative bg-motif-fleurs"
+      style={{ backgroundColor: "hsl(var(--blue-pale))" }}
     >
       <div className="botanical-corner bl" />
       <div className="botanical-corner br" />

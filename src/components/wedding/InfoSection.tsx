@@ -36,8 +36,8 @@ export default function InfoSection() {
   return (
     <section
       id="infos"
-      className="py-14 px-6 relative"
-      style={{ background: "hsl(var(--blue-ice))" }}
+      className="py-14 px-6 relative bg-motif-fleurs"
+      style={{ backgroundColor: "hsl(var(--blue-ice))" }}
     >
       <div className="botanical-corner bl" />
       <div className="botanical-corner br" />
